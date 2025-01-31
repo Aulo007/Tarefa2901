@@ -12,7 +12,7 @@ volatile bool acionador[3] = {true, false, false};
 
 // Declarando função de callback que será chamada pelo temporizador, ela é do tipo bool
 // ou seja, se retornar true ela continua o temporizador, se falso ela para.
-
+bool nand(bool a, bool b);
 bool repeating_timer_callback(struct repeating_timer *t);
 
 int main()
@@ -43,10 +43,16 @@ int main()
     }
 }
 
+bool nand(bool a, bool b)
+{
+    return !(a && b);
+}
+
 bool repeating_timer_callback(struct repeating_timer *t)
 {
     if (acionador[0] == true && nand(acionador[1], acionador[2]) == true)
     {
+        gpio_put(LED_BLUE_PIN, false);
         gpio_put(LED_RED_PIN, true);
         acionador[0] = false;
         acionador[1] = true;
@@ -54,12 +60,14 @@ bool repeating_timer_callback(struct repeating_timer *t)
 
     else if (acionador[1] == true && nand(acionador[0], acionador[2]) == true)
     {
+        gpio_put(LED_RED_PIN, false);
         gpio_put(LED_YELLOW_PIN, true);
         acionador[1] = false;
         acionador[2] = true;
     }
     else
     {
+        gpio_put(LED_YELLOW_PIN, false);
         gpio_put(LED_BLUE_PIN, true);
         acionador[2] = false;
         acionador[0] = true;
