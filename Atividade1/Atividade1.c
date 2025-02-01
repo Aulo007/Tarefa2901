@@ -3,10 +3,9 @@
 #include "hardware/timer.h" // Inclui a biblioteca para gerenciamento de temporizadores de hardware.
 
 // Declaração dos pinos
-
-const uint LED_RED_PIN = 11;
+const uint LED_GREEN_PIN = 11;
 const uint LED_YELLOW_PIN = 12;
-const uint LED_GREEN_PIN = 13;
+const uint LED_RED_PIN = 13;
 
 volatile bool acionador[3] = {false, true, false};
 
@@ -23,6 +22,7 @@ int main()
     gpio_init(LED_RED_PIN);
     gpio_init(LED_YELLOW_PIN);
     gpio_init(LED_GREEN_PIN);
+
 
     // Seta direçao dos leds
     gpio_set_dir(LED_RED_PIN, GPIO_OUT);
