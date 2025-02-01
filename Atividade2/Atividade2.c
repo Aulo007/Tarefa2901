@@ -31,7 +31,7 @@ static int64_t turn_off_callback(alarm_id_t, void *user_data)
 
     if (contador == 3)
     {
-        gpio_put(LED_BLUE_PIN, false);
+        gpio_put(LED_RED_PIN, false);
         BUTTON_PRESSED = true;
         return 3000 * 1000;
     }
@@ -63,6 +63,8 @@ int main()
     while (true)
     {
         uint32_t current_time_in_us = to_us_since_boot(get_absolute_time());
+
+        sleep_ms(100); // evitar lag
 
         if (current_time_in_us - last_time > 50000)
         {
