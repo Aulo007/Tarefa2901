@@ -18,4 +18,7 @@ Para usar o código da segunda atividade, basta ir na extensão do raspberry pi 
 
 Após isso, espere carregar/criar as dependencia e clique no compile no parte inferior do vscode.
 
-Vá no aquivo diagram.json e pode rodar o código.
+Vá no aquivo diagram.json e pode rodar o código. 
+
+## Utilização na Placa Bitdolag
+Ambos os códigos foram testados na placa da bitdolag, para utiliza-los lá basta conectar a placa no modo bootsel e clickar no run, que está ao lado do compile.
